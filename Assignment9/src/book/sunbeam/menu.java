@@ -2,6 +2,8 @@ package book.sunbeam;
 
 import java.util.*;
 
+import com.sunbeam.Students;
+
 public class menu {
 	
 	public static int MenuDrivern() {
@@ -56,9 +58,42 @@ public class menu {
 			     }
 			    	 
 			  break;
-		  case 4:
-			  
-			  
+		  case 4:System.out.print("Enter id of album to find: ");
+		    Scanner cc=new Scanner(System.in);
+			String isbn = cc.next();
+			
+			Book key = new Book();
+			
+		     key.setIsbn(isbn);
+			int Index = b.indexOf(key);
+			if(Index == -1)
+				System.out.println("Album not found.");
+			else {
+				System.out.println("Album Found at Index: " + Index);
+				b1 = b.get(Index);
+				System.out.println(b1);
+			}
+			  break;
+		  case 5:
+			      b.clear();
+			
+			  break;
+		  case 6:
+		     System.out.println("size "+b.size());
+			  break;
+		  case 7:
+			  class BookPrice implements Comparator<Book>{
+				  public int compare(Book b1,Book b2) {
+					  int diff= - Double.compare(b1.getPrice(), b2.getPrice());
+				   return diff;
+				  }
+			  }
+			  BookPrice comparator = new BookPrice();
+			  b.sort(comparator);
+			  for (Book book : b) {
+				  System.out.println(book);
+				
+			}
 			  break;
 		  default: System.out.println("Wrong Choice!!!");
 		  }	 

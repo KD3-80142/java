@@ -1,7 +1,9 @@
 package book.sunbeam;
 
 
-import java.util.Scanner;
+import java.util.*;
+
+
 
 public class Book {
     private String isbn;
@@ -47,7 +49,18 @@ public class Book {
 		return "\n Book [isbn=" + isbn + ", price=" + price + ", AuthorName=" + AuthorName + ", quantity=" + quantity
 				+ "]";
 	}
-	
+	public boolean equals(Object obj) {
+		if(obj == null)
+			return false;
+		if(this == obj)
+			return true;
+		if(obj instanceof Book) {
+			Book other = (Book) obj;
+			if(this.isbn == other.isbn)
+				return true;
+		}
+		return false;
+	}
 	public void Accept() {
 		Scanner sc= new Scanner (System.in);
 		System.out.println("Enter isbn of book");
